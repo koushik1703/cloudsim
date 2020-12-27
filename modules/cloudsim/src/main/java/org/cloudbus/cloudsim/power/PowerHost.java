@@ -37,6 +37,15 @@ public class PowerHost extends HostDynamicWorkload {
 
 	/** The power model used by the host. */
 	private PowerModel powerModel;
+	private double temperature;
+	private double neighbourTemperature;
+	private double coolingTemperature;
+	private PowerHost frontHost;
+	private PowerHost backHost;
+	private PowerHost rightHost;
+	private PowerHost leftHost;
+	private PowerHost upHost;
+	private PowerHost downHost;
 
 	/**
 	 * Instantiates a new PowerHost.
@@ -58,6 +67,8 @@ public class PowerHost extends HostDynamicWorkload {
 			PowerModel powerModel) {
 		super(id, ramProvisioner, bwProvisioner, storage, peList, vmScheduler);
 		setPowerModel(powerModel);
+		setCoolingTemperature(0.2);
+		setTemperature(40);
 	}
 
 	/**
@@ -138,4 +149,73 @@ public class PowerHost extends HostDynamicWorkload {
 		return powerModel;
 	}
 
+	public void incrementTemperature(double utilization) {
+		this.temperature = getTemperature() - getCoolingTemperature() + (0.03 * utilization);
+	}
+
+	public void setTemperature(double temperature) {
+		this.temperature = temperature;
+	}
+
+	public double getTemperature() {
+		return this.temperature;
+	}
+
+	public void setCoolingTemperature(double coolingTemperature) {
+		this.coolingTemperature = coolingTemperature;
+	}
+
+	public double getCoolingTemperature() {
+		return this.coolingTemperature;
+	}
+
+	public void setFrontHost(PowerHost frontHost) {
+		this.frontHost = frontHost;
+	}
+
+	public void setBackHost(PowerHost backHost) {
+		this.backHost = backHost;
+	}
+
+	public void setLeftHost(PowerHost leftHost) {
+		this.leftHost = leftHost;
+	}
+
+	public void setRightHost(PowerHost rightHost) {
+		this.rightHost = rightHost;
+	}
+
+	public void setUpHost(PowerHost upHost) {
+		this.upHost = upHost;
+	}
+
+	public void setDownHost(PowerHost downHost) {
+		this.downHost = downHost;
+	}
+
+	public void getTemperatureFromNeighbour() {
+		this.neighbourTemperature = 0;
+		if(this.backHost != null) {
+			this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.backHost.getTemperature();
+		}
+		if(this.frontHost != null) {
+			this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.frontHost.getTemperature();
+		}
+		if(this.upHost != null) {
+			this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.upHost.getTemperature();
+		}
+		if(this.downHost != null) {
+			this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.downHost.getTemperature();
+		}
+		if(this.leftHost != null) {
+			this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.leftHost.getTemperature();
+		}
+		if(this.rightHost != null) {
+			this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.rightHost.getTemperature();
+		}
+	}
+
+	public void updateTemperatureFromNeighbour() {
+		this.temperature = this.temperature + this.neighbourTemperature;
+	}
 }
