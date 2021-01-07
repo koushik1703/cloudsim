@@ -128,7 +128,7 @@ public class PowerHost extends HostDynamicWorkload {
 		}
 		double fromPower = getPower(fromUtilization);
 		double toPower = getPower(toUtilization);
-		return (fromPower + (toPower - fromPower) / 2) * time;
+		return ((fromPower + (toPower - fromPower) / 2) + (0.2 * temperature)) * time;
 	}
 
 	/**

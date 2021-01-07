@@ -3,11 +3,9 @@ package org.cloudbus.cloudsim.examples;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import org.cloudbus.cloudsim.*;
 import org.cloudbus.cloudsim.core.CloudSim;
@@ -22,12 +20,13 @@ public class CloudSimExample9 {
     public static void main(String[] args) {
 
         try {
+            cellularAutomataEvolve();
             int num_user = 1;
             Calendar calendar = Calendar.getInstance();
             boolean trace_flag = false;
             CloudSim.init(num_user, calendar, trace_flag);
 
-            List<PowerHost> hostList = new ArrayList<PowerHost>();
+            List<PowerHostUtilizationHistory> hostList = new ArrayList<PowerHostUtilizationHistory>();
             List<PowerVm> vmlist = new ArrayList<PowerVm>();
             List<Pe> peList = new ArrayList<Pe>();
             LinkedList<Storage> storageList = new LinkedList<Storage>();
@@ -41,9 +40,9 @@ public class CloudSimExample9 {
                 peList.add(pe);
             }
 
-            int numberOfColumns = 6;
-            int numberOfRacks = 6;
-            int numberOfHosts = 6;
+            int numberOfColumns = 2;
+            int numberOfRacks = 2;
+            int numberOfHosts = 2;
             int loadFrequency = 288;
             int firstColumn = 0;
             int lastColumn = 5;
@@ -63,7 +62,7 @@ public class CloudSimExample9 {
                         BwProvisionerSimple bwProvisionerSimple = new BwProvisionerSimple(hostBw);
                         VmSchedulerTimeShared vmSchedulerTimeShared = new VmSchedulerTimeShared(peList);
                         PowerModel powerModel = new PowerModelLinear(200, 0.3);
-                        PowerHost powerHost = new PowerHost(hostId, ramProvisioner, bwProvisionerSimple, hostStorage, peList, vmSchedulerTimeShared, powerModel);
+                        PowerHostUtilizationHistory powerHost = new PowerHostUtilizationHistory(hostId, ramProvisioner, bwProvisionerSimple, hostStorage, peList, vmSchedulerTimeShared, powerModel);
                         powerHosts[column][rack][host] = powerHost;
                         hostList.add(powerHost);
                         hostId++;
@@ -99,7 +98,7 @@ public class CloudSimExample9 {
             BwProvisionerSimple bwProvisionerSimple = new BwProvisionerSimple(hostBw);
             VmSchedulerTimeShared vmSchedulerTimeShared = new VmSchedulerTimeShared(peList);
             PowerModel powerModel = new PowerModelLinear(200, 0.3);
-            PowerHost powerHost = new PowerHost(hostId, ramProvisioner, bwProvisionerSimple, hostStorage, peList, vmSchedulerTimeShared, powerModel);
+            PowerHostUtilizationHistory powerHost = new PowerHostUtilizationHistory(hostId, ramProvisioner, bwProvisionerSimple, hostStorage, peList, vmSchedulerTimeShared, powerModel);
             hostList.add(powerHost);
 
             String arch = "x86";
@@ -111,7 +110,8 @@ public class CloudSimExample9 {
             double costPerStorage = 0.001;
             double costPerBw = 0.0;
             DatacenterCharacteristics characteristics = new DatacenterCharacteristics(arch, os, vmm, hostList, time_zone, cost, costPerMem, costPerStorage, costPerBw);
-            PowerDatacenter datacenter = new PowerDatacenter("DataCenter1", characteristics, new PowerVmAllocationPolicySimple(hostList), storageList, 300);
+            VmAllocationPolicy powerVmAllocationPolicy = new PowerVmAllocationMigrationCellularAutomata(hostList);
+            PowerDatacenter datacenter = new PowerDatacenter("DataCenter1", characteristics, powerVmAllocationPolicy, storageList, 300);
 
             PowerDatacenterBroker broker = new PowerDatacenterBroker("Broker");
             int brokerId = broker.getId();
@@ -124,26 +124,26 @@ public class CloudSimExample9 {
             File inputFolder = new java.io.File("C:\\Users\\User\\Documents\\Study_Project\\cloudsim"
                     + "\\modules\\cloudsim-examples\\target\\classes\\workload\\planetlab\\20110306");
             File[] files = inputFolder.listFiles();
-            long length[] = new long[files.length];
-            for(int i = 0; i < files.length; i++) {
+            long length[] = new long[10];
+            for(int i = 0; i < 10; i++) {
                 BufferedReader input = new BufferedReader(new FileReader(files[i].getAbsolutePath()));
                 int utilization = 0;
                 for(int j = 0; j < loadFrequency; j++) {
                     utilization = utilization + Integer.valueOf(input.readLine());
                 }
-                length[i] = utilization * 300;
+                length[i] = utilization * 150;
             }
             long fileSize = 300;
             long outputSize = 300;
             UtilizationModel utilizationModelNull = new UtilizationModelNull();
-            for(int i = 0; i < files.length; i++) {
+            for(int i = 0; i < 10; i++) {
                 UtilizationModelPlanetLabInMemory utilizationModelPlanetLabInMemory = new UtilizationModelPlanetLabInMemory(files[i].getAbsolutePath(), Constants.SCHEDULING_INTERVAL);
                 Cloudlet cloudlet = new Cloudlet(i, length[i], pesNumber, fileSize, outputSize, utilizationModelPlanetLabInMemory, utilizationModelNull, utilizationModelNull);
                 cloudlet.setUserId(brokerId);
                 cloudlet.setVmId(i);
                 cloudletList.add(cloudlet);
             }
-            for(int i = 0; i < files.length; i++) {
+            for(int i = 0; i < 10; i++) {
                 CloudletSchedulerDynamicWorkload cloudletSchedulerDynamicWorkload = new CloudletSchedulerDynamicWorkload(100, 1);
                 vmlist.add(new PowerVm(i, brokerId, mips, pesNumber, ram, bw, size, 1, vmm, cloudletSchedulerDynamicWorkload, 300));
             }
@@ -162,7 +162,7 @@ public class CloudSimExample9 {
 
             CloudSim.stopSimulation();
 
-            printCloudletList(newList, hostList);
+            printCloudletList(newList, hostList, datacenter);
             Log.printLine("CloudSimExample1 finished!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -170,7 +170,7 @@ public class CloudSimExample9 {
         }
     }
 
-    private static void printCloudletList(List<Cloudlet> list, List<PowerHost> hosts) {
+    private static void printCloudletList(List<Cloudlet> list, List<PowerHostUtilizationHistory> hosts, PowerDatacenter powerDatacenter) {
         int size = list.size();
         Cloudlet cloudlet;
 
@@ -193,10 +193,98 @@ public class CloudSimExample9 {
         }
 
         Log.printLine("========== OUTPUT ==========");
-        Log.printLine("host ID" + indent + "Temperature");
+        Log.printLine("Datacenter ID" + indent + "Energy Consumed");
+        double energy = powerDatacenter.getPower() / (3600 * 1000);
+        Log.printLine(powerDatacenter.getId() + indent + indent + indent + energy);
 
-        for(int j = 0; j < hosts.size(); j++) {
-            Log.printLine(indent + indent + hosts.get(j).getId() + indent + indent + indent + hosts.get(j).getTemperature());
+    }
+    public static void cellularAutomataEvolve() {
+        int columns = 10;
+        int racks = 10;
+        int hosts = 10;
+        int [][][]cellularAutomata = new int[columns][racks][hosts];
+
+        for(int column = 0; column < columns; column++) {
+            for (int rack = 0; rack < racks; rack++) {
+                for (int host = 0; host < hosts; host++) {
+                    cellularAutomata[column][rack][host] = new Random().nextInt(2);
+                }
+            }
         }
+        try {
+            for(int step = 0; step < 288; step++) {
+                String fileName = System.getProperty("user.dir") + "\\Data\\ActiveHostAt" + step + ".txt";
+                System.out.println(fileName);
+                File myObj = new File(fileName);
+                if (myObj.createNewFile()) {
+                    System.out.println("File created: " + myObj.getName());
+                } else {
+                    System.out.println("File already exists.");
+                }
+                FileWriter fileWriter = new FileWriter(fileName);
+                for (int column = 0; column < columns; column++) {
+                    for (int rack = 0; rack < racks; rack++) {
+                        for (int host = 0; host < hosts; host++) {
+                            int cell = 2;
+                            int left = 2;
+                            int right = 2;
+                            int top = 2;
+                            int bottom = 2;
+                            int front = 2;
+                            int back = 2;
+                            if (host == hosts - 1) {
+                                right = 0;
+                            }
+                            if (host == 0) {
+                                left = 0;
+                            }
+                            if (rack == racks - 1) {
+                                bottom = 0;
+                            }
+                            if (rack == 0) {
+                                top = 0;
+                            }
+                            if (column == columns - 1) {
+                                back = 0;
+                            }
+                            if (column == 0) {
+                                front = 0;
+                            }
+                            cell = cellularAutomata[column][rack][host];
+                            if (right == 2) {
+                                right = cellularAutomata[column][rack][host + 1];
+                            }
+                            if (left == 2) {
+                                left = cellularAutomata[column][rack][host - 1];
+                            }
+                            if (bottom == 2) {
+                                bottom = cellularAutomata[column][rack + 1][host];
+                            }
+                            if (top == 2) {
+                                top = cellularAutomata[column][rack - 1][host];
+                            }
+                            if (back == 2) {
+                                back = cellularAutomata[column + 1][rack][host];
+                            }
+                            if (front == 2) {
+                                front = cellularAutomata[column - 1][rack][host];
+                            }
+                            cellularAutomata[column][rack][host] = rules(cell, right, left, bottom, top, back, front);
+                            fileWriter.write(cellularAutomata[column][rack][host] + "\n");
+                        }
+                    }
+                }
+                fileWriter.close();
+            }
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
+
+    public static int rules(int cell, int right, int left, int bottom, int top, int back, int front) {
+        if(cell + right + left + bottom + top + back + front < 3) {
+            return 1;
+        }
+        return 0;
     }
 }
