@@ -190,14 +190,6 @@ public class PowerDatacenter extends Datacenter {
 					host.getUtilizationOfCpu() * 100);
 		}
 
-		for(PowerHost host : this.<PowerHost> getHostList()) {
-			host.getTemperatureFromNeighbour();
-		}
-
-		for(PowerHost host : this.<PowerHost> getHostList()) {
-			host.updateTemperatureFromNeighbour();
-		}
-
 		if (timeDiff > 0) {
 			Log.formatLine(
 					"\nEnergy consumption for the last time frame from %.2f to %.2f:",
@@ -205,7 +197,6 @@ public class PowerDatacenter extends Datacenter {
 					currentTime);
 
 			for (PowerHost host : this.<PowerHost> getHostList()) {
-				host.incrementTemperature(host.getPreviousUtilizationOfCpu());
 				double previousUtilizationOfCpu = host.getPreviousUtilizationOfCpu();
 				double utilizationOfCpu = host.getUtilizationOfCpu();
 				double timeFrameHostEnergy = host.getEnergyLinearInterpolation(

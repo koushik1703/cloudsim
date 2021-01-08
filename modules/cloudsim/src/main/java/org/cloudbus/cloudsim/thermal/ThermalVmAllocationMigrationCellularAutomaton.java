@@ -1,34 +1,19 @@
-/*
- * Title:        CloudSim Toolkit
- * Description:  CloudSim (Cloud Simulation) Toolkit for Modeling and Simulation of Clouds
- * Licence:      GPL - http://www.gnu.org/copyleft/gpl.html
- *
- * Copyright (c) 2009-2012, The University of Melbourne, Australia
- */
-
-package org.cloudbus.cloudsim.power;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+package org.cloudbus.cloudsim.thermal;
 
 import org.cloudbus.cloudsim.Host;
 import org.cloudbus.cloudsim.HostDynamicWorkload;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.Vm;
 import org.cloudbus.cloudsim.core.CloudSim;
-import org.cloudbus.cloudsim.power.lists.PowerVmList;
+import org.cloudbus.cloudsim.power.PowerVmAllocationPolicyAbstract;
 import org.cloudbus.cloudsim.util.ExecutionTimeMeasurer;
 
-public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocationPolicyAbstract {
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+
+public class ThermalVmAllocationMigrationCellularAutomaton extends PowerVmAllocationPolicyAbstract {
 
     private final List<Map<String, Object>> savedAllocation = new ArrayList<Map<String, Object>>();
 
@@ -48,7 +33,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
 
     private int currentAllocation;
 
-    public PowerVmAllocationMigrationCellularAutomata(List<? extends Host> hostList) {
+    public ThermalVmAllocationMigrationCellularAutomaton(List<? extends Host> hostList) {
         super(hostList);
         currentAllocation = 0;
     }
@@ -58,7 +43,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         ExecutionTimeMeasurer.start("optimizeAllocationTotal");
 
         ExecutionTimeMeasurer.start("optimizeAllocationHostSelection");
-        List<PowerHostUtilizationHistory> currentShutDownHosts = getCurrentShutDownHosts();
+        List<ThermalHostUtilizationHistory> currentShutDownHosts = getCurrentShutDownHosts();
         getExecutionTimeHistoryHostSelection().add(ExecutionTimeMeasurer.end("optimizeAllocationHostSelection"));
 
         printCurrentShutDownHosts(currentShutDownHosts);
@@ -82,21 +67,21 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         return migrationMap;
     }
 
-    protected void printCurrentShutDownHosts(List<PowerHostUtilizationHistory> currentShutDownHosts) {
+    protected void printCurrentShutDownHosts(List<ThermalHostUtilizationHistory> currentShutDownHosts) {
         if (!Log.isDisabled()) {
             Log.printLine("Shut down hosts:");
-            for (PowerHostUtilizationHistory host : currentShutDownHosts) {
+            for (ThermalHostUtilizationHistory host : currentShutDownHosts) {
                 Log.printConcatLine("Host #", host.getId());
             }
             Log.printLine();
         }
     }
 
-    public PowerHost findHostForVm(Vm vm, Set<? extends Host> excludedHosts) {
+    public ThermalHost findHostForVm(Vm vm, Set<? extends Host> excludedHosts) {
         double minPower = Double.MAX_VALUE;
-        PowerHost allocatedHost = null;
+        ThermalHost allocatedHost = null;
 
-        for (PowerHost host : this.<PowerHost> getHostList()) {
+        for (ThermalHost host : this.<ThermalHost> getHostList()) {
             if (excludedHosts.contains(host)) {
                 continue;
             }
@@ -115,13 +100,14 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
                         }
                     }
                 } catch (Exception e) {
+                    System.out.println("Error");
                 }
             }
         }
         return allocatedHost;
     }
 
-    protected boolean isHostOverUtilizedAfterAllocation(PowerHost host, Vm vm) {
+    protected boolean isHostOverUtilizedAfterAllocation(ThermalHost host, Vm vm) {
         boolean isHostOverUtilizedAfterAllocation = true;
         isHostOverUtilizedAfterAllocation = isHostOverUtilized(host, vm);
         host.vmDestroy(vm);
@@ -129,7 +115,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
     }
 
     @Override
-    public PowerHost findHostForVm(Vm vm) {
+    public ThermalHost findHostForVm(Vm vm) {
         Set<Host> excludedHosts = new HashSet<Host>();
         if (vm.getHost() != null) {
             excludedHosts.add(vm.getHost());
@@ -139,9 +125,9 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
 
     protected List<Map<String, Object>> getNewVmPlacement(List<? extends Vm> vmsToMigrate, Set<? extends Host> excludedHosts) {
         List<Map<String, Object>> migrationMap = new LinkedList<Map<String, Object>>();
-        PowerVmList.sortByCpuUtilization(vmsToMigrate);
+        ThermalVmList.sortByCpuUtilization(vmsToMigrate);
         for (Vm vm : vmsToMigrate) {
-            PowerHost allocatedHost = findHostForVm(vm, excludedHosts);
+            ThermalHost allocatedHost = findHostForVm(vm, excludedHosts);
             if (allocatedHost != null) {
                 allocatedHost.vmCreate(vm);
                 Log.printConcatLine("VM #", vm.getId(), " allocated to host #", allocatedHost.getId());
@@ -155,9 +141,9 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         return migrationMap;
     }
 
-    protected List<? extends Vm> getVmsToMigrateFromHosts(List<PowerHostUtilizationHistory> overUtilizedHosts) {
+    protected List<? extends Vm> getVmsToMigrateFromHosts(List<ThermalHostUtilizationHistory> overUtilizedHosts) {
         List<Vm> vmsToMigrate = new LinkedList<Vm>();
-        for (PowerHostUtilizationHistory host : overUtilizedHosts) {
+        for (ThermalHostUtilizationHistory host : overUtilizedHosts) {
             List<Vm> vmsToRemoveFromHost = new LinkedList<Vm>();
             for(Vm vm : host.getVmList()) {
                 vmsToMigrate.add(vm);
@@ -170,8 +156,8 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         return vmsToMigrate;
     }
 
-    protected List<PowerHostUtilizationHistory> getCurrentShutDownHosts() {
-        List<PowerHostUtilizationHistory> currentShutDownHosts = new LinkedList<PowerHostUtilizationHistory>();
+    protected List<ThermalHostUtilizationHistory> getCurrentShutDownHosts() {
+        List<ThermalHostUtilizationHistory> currentShutDownHosts = new LinkedList<ThermalHostUtilizationHistory>();
         String fileName = System.getProperty("user.dir") + "\\Data\\ActiveHostAt" + currentAllocation + ".txt";
         List<String> allocations = null;
         try {
@@ -179,7 +165,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (PowerHostUtilizationHistory host : this.<PowerHostUtilizationHistory> getHostList()) {
+        for (ThermalHostUtilizationHistory host : this.<ThermalHostUtilizationHistory> getHostList()) {
             if (allocations.get(host.getId()).equals("0")) {
                 currentShutDownHosts.add(host);
             }
@@ -188,7 +174,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         return currentShutDownHosts;
     }
 
-    protected boolean isHostOverUtilized(PowerHost host, Vm vm) {
+    protected boolean isHostOverUtilized(ThermalHost host, Vm vm) {
         double requestedTotalMips = vm.getCurrentRequestedTotalMips();
         double hostUtilizationMips = getUtilizationOfCpuMips(host);
         double hostPotentialUtilizationMips = hostUtilizationMips + requestedTotalMips;
@@ -236,7 +222,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         }
         for (Map<String, Object> map : getSavedAllocation()) {
             Vm vm = (Vm) map.get("vm");
-            PowerHost host = (PowerHost) map.get("host");
+            ThermalHost host = (ThermalHost) map.get("host");
             if (!host.vmCreate(vm)) {
                 Log.printConcatLine("Couldn't restore VM #", vm.getId(), " on host #", host.getId());
                 System.exit(0);
@@ -245,7 +231,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         }
     }
 
-    protected double getPowerAfterAllocation(PowerHost host, Vm vm) {
+    protected double getPowerAfterAllocation(ThermalHost host, Vm vm) {
         double power = 0;
         try {
             power = host.getPowerModel().getPower(getMaxUtilizationAfterAllocation(host, vm));
@@ -256,7 +242,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         return power;
     }
 
-    protected double getMaxUtilizationAfterAllocation(PowerHost host, Vm vm) {
+    protected double getMaxUtilizationAfterAllocation(ThermalHost host, Vm vm) {
         double requestedTotalMips = vm.getCurrentRequestedTotalMips();
         double hostUtilizationMips = getUtilizationOfCpuMips(host);
         double hostPotentialUtilizationMips = hostUtilizationMips + requestedTotalMips;
@@ -264,7 +250,7 @@ public class PowerVmAllocationMigrationCellularAutomata extends PowerVmAllocatio
         return pePotentialUtilization;
     }
 
-    protected double getUtilizationOfCpuMips(PowerHost host) {
+    protected double getUtilizationOfCpuMips(ThermalHost host) {
         double hostUtilizationMips = 0;
         for (Vm vm2 : host.getVmList()) {
             if (host.getVmsMigratingIn().contains(vm2)) {

@@ -173,7 +173,7 @@ public class PowerVm extends Vm {
 	 * 
 	 * @return the CPU utilization percentage history
 	 */
-	protected List<Double> getUtilizationHistory() {
+	public List<Double> getUtilizationHistory() {
 		return utilizationHistory;
 	}
 
