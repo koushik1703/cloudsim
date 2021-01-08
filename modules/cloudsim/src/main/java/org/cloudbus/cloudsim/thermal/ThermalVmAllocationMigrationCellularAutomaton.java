@@ -1,9 +1,6 @@
 package org.cloudbus.cloudsim.thermal;
 
-import org.cloudbus.cloudsim.Host;
-import org.cloudbus.cloudsim.HostDynamicWorkload;
-import org.cloudbus.cloudsim.Log;
-import org.cloudbus.cloudsim.Vm;
+import org.cloudbus.cloudsim.*;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.power.PowerVmAllocationPolicyAbstract;
 import org.cloudbus.cloudsim.util.ExecutionTimeMeasurer;
@@ -33,38 +30,51 @@ public class ThermalVmAllocationMigrationCellularAutomaton extends PowerVmAlloca
 
     private int currentAllocation;
 
-    public ThermalVmAllocationMigrationCellularAutomaton(List<? extends Host> hostList) {
+    private int optimizationInterval;
+
+    private double previousOptimization;
+
+    public ThermalVmAllocationMigrationCellularAutomaton(List<? extends Host> hostList, int optimizationInterval) {
         super(hostList);
-        currentAllocation = 0;
+        this.currentAllocation = 0;
+        this.previousOptimization = 0;
+        this.optimizationInterval = optimizationInterval;
     }
 
     @Override
     public List<Map<String, Object>> optimizeAllocation(List<? extends Vm> vmList) {
-        ExecutionTimeMeasurer.start("optimizeAllocationTotal");
 
-        ExecutionTimeMeasurer.start("optimizeAllocationHostSelection");
-        List<ThermalHostUtilizationHistory> currentShutDownHosts = getCurrentShutDownHosts();
-        getExecutionTimeHistoryHostSelection().add(ExecutionTimeMeasurer.end("optimizeAllocationHostSelection"));
+        if(CloudSim.clock() - previousOptimization > optimizationInterval) {
+            ExecutionTimeMeasurer.start("optimizeAllocationTotal");
 
-        printCurrentShutDownHosts(currentShutDownHosts);
+            ExecutionTimeMeasurer.start("optimizeAllocationHostSelection");
+            List<ThermalHostUtilizationHistory> currentShutDownHosts = getCurrentShutDownHosts();
+            getExecutionTimeHistoryHostSelection().add(ExecutionTimeMeasurer.end("optimizeAllocationHostSelection"));
 
-        saveAllocation();
+            printCurrentShutDownHosts(currentShutDownHosts);
 
-        ExecutionTimeMeasurer.start("optimizeAllocationVmSelection");
-        List<? extends Vm> vmsToMigrate = getVmsToMigrateFromHosts(currentShutDownHosts);
-        getExecutionTimeHistoryVmSelection().add(ExecutionTimeMeasurer.end("optimizeAllocationVmSelection"));
+            saveAllocation();
 
-        Log.printLine("Reallocation of VMs from the Shutdown hosts:");
-        ExecutionTimeMeasurer.start("optimizeAllocationVmReallocation");
-        List<Map<String, Object>> migrationMap = getNewVmPlacement(vmsToMigrate, new HashSet<Host>(currentShutDownHosts));
-        getExecutionTimeHistoryVmReallocation().add(ExecutionTimeMeasurer.end("optimizeAllocationVmReallocation"));
-        Log.printLine();
+            ExecutionTimeMeasurer.start("optimizeAllocationVmSelection");
+            List<? extends Vm> vmsToMigrate = getVmsToMigrateFromHosts(currentShutDownHosts);
+            getExecutionTimeHistoryVmSelection().add(ExecutionTimeMeasurer.end("optimizeAllocationVmSelection"));
 
-        restoreAllocation();
+            Log.printLine("Reallocation of VMs from the Shutdown hosts:");
+            ExecutionTimeMeasurer.start("optimizeAllocationVmReallocation");
+            List<Map<String, Object>> migrationMap = getNewVmPlacement(vmsToMigrate, new HashSet<Host>(currentShutDownHosts));
+            getExecutionTimeHistoryVmReallocation().add(ExecutionTimeMeasurer.end("optimizeAllocationVmReallocation"));
+            Log.printLine();
 
-        getExecutionTimeHistoryTotal().add(ExecutionTimeMeasurer.end("optimizeAllocationTotal"));
+            restoreAllocation();
 
-        return migrationMap;
+            getExecutionTimeHistoryTotal().add(ExecutionTimeMeasurer.end("optimizeAllocationTotal"));
+
+            previousOptimization = CloudSim.clock();
+            return migrationMap;
+        } else {
+            List<Map<String, Object>> migrationMap = new ArrayList<Map<String, Object>>();
+            return migrationMap;
+        }
     }
 
     protected void printCurrentShutDownHosts(List<ThermalHostUtilizationHistory> currentShutDownHosts) {
@@ -170,6 +180,7 @@ public class ThermalVmAllocationMigrationCellularAutomaton extends PowerVmAlloca
                 currentShutDownHosts.add(host);
             }
         }
+        currentAllocation++;
 
         return currentShutDownHosts;
     }

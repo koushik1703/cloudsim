@@ -21,11 +21,7 @@ public class ThermalHostHelper {
         int hostRam = 2560;
         long hostStorage = 1000000;
         int hostBw = 10000;
-        int firstColumn = 0;
         int firstHost = 0;
-        int firstRack = 0;
-        int lastColumn = numberOfColumns - 1;
-        int lastRack = numberOfRacks - 1;
         int lastHost = numberOfHosts - 1;
 
         List<ThermalHostUtilizationHistory> hostList = new ArrayList<ThermalHostUtilizationHistory>();
@@ -52,21 +48,10 @@ public class ThermalHostHelper {
                 }
             }
         }
+
         for(int column = 0; column < numberOfColumns; column++) {
             for(int rack = 0; rack < numberOfRacks; rack++) {
                 for(int host = 0; host < numberOfRacks; host++) {
-                    if(column != firstColumn) {
-                        thermalHosts[column][rack][host].setBackHost(thermalHosts[column - 1][rack][host]);
-                    }
-                    if(column != lastColumn) {
-                        thermalHosts[column][rack][host].setFrontHost(thermalHosts[column + 1][rack][host]);
-                    }
-                    if(rack != firstRack) {
-                        thermalHosts[column][rack][host].setUpHost(thermalHosts[column][rack - 1][host]);
-                    }
-                    if(rack != lastRack) {
-                        thermalHosts[column][rack][host].setDownHost(thermalHosts[column][rack + 1][host]);
-                    }
                     if(host != firstHost) {
                         thermalHosts[column][rack][host].setRightHost(thermalHosts[column][rack][host - 1]);
                     }

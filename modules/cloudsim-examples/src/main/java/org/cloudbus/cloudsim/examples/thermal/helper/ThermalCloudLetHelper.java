@@ -22,7 +22,7 @@ public class ThermalCloudLetHelper {
         String dir = "user.dir";
         String path = "\\modules\\cloudsim-examples\\target\\classes\\workload\\planetlab\\20110306";
 
-        File inputFolder = new java.io.File(System.getProperty(dir) + path);
+        File inputFolder = new File(System.getProperty(dir) + path);
         File[] files = inputFolder.listFiles();
         long[] length = new long[numberOfCloudLets];
         for(int i = 0; i < numberOfCloudLets; i++) {

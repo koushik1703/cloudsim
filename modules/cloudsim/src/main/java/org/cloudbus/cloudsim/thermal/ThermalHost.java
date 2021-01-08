@@ -13,17 +13,23 @@ public class ThermalHost extends PowerHost {
     private double temperature;
     private double neighbourTemperature;
     private double coolingTemperature;
-    private ThermalHost frontHost;
-    private ThermalHost backHost;
     private ThermalHost rightHost;
     private ThermalHost leftHost;
-    private ThermalHost upHost;
-    private ThermalHost downHost;
 
     public ThermalHost(int id, RamProvisioner ramProvisioner, BwProvisioner bwProvisioner, long storage, List<? extends Pe> peList, VmScheduler vmScheduler, PowerModel powerModel) {
         super(id, ramProvisioner, bwProvisioner, storage, peList, vmScheduler, powerModel);
         setCoolingTemperature(0.2);
         setTemperature(40);
+    }
+
+    @Override
+    public double getEnergyLinearInterpolation(double fromUtilization, double toUtilization, double time) {
+        if (fromUtilization == 0) {
+            return 0;
+        }
+        double fromPower = getPower(fromUtilization);
+        double toPower = getPower(toUtilization);
+        return ((fromPower + (toPower - fromPower) / 2) + getTemperature()) * time;
     }
 
     public void incrementTemperature(double utilization) {
@@ -46,14 +52,6 @@ public class ThermalHost extends PowerHost {
         return this.coolingTemperature;
     }
 
-    public void setFrontHost(ThermalHost frontHost) {
-        this.frontHost = frontHost;
-    }
-
-    public void setBackHost(ThermalHost backHost) {
-        this.backHost = backHost;
-    }
-
     public void setLeftHost(ThermalHost leftHost) {
         this.leftHost = leftHost;
     }
@@ -62,28 +60,8 @@ public class ThermalHost extends PowerHost {
         this.rightHost = rightHost;
     }
 
-    public void setUpHost(ThermalHost upHost) {
-        this.upHost = upHost;
-    }
-
-    public void setDownHost(ThermalHost downHost) {
-        this.downHost = downHost;
-    }
-
     public void getTemperatureFromNeighbour() {
         this.neighbourTemperature = 0;
-        if(this.backHost != null) {
-            this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.backHost.getTemperature();
-        }
-        if(this.frontHost != null) {
-            this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.frontHost.getTemperature();
-        }
-        if(this.upHost != null) {
-            this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.upHost.getTemperature();
-        }
-        if(this.downHost != null) {
-            this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.downHost.getTemperature();
-        }
         if(this.leftHost != null) {
             this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.leftHost.getTemperature();
         }

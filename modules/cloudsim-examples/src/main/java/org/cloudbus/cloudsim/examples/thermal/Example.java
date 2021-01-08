@@ -4,10 +4,6 @@ import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.examples.thermal.helper.*;
-import org.cloudbus.cloudsim.power.PowerDatacenter;
-import org.cloudbus.cloudsim.power.PowerDatacenterBroker;
-import org.cloudbus.cloudsim.power.PowerHostUtilizationHistory;
-import org.cloudbus.cloudsim.power.PowerVm;
 import org.cloudbus.cloudsim.thermal.*;
 
 import java.util.Calendar;
@@ -15,16 +11,16 @@ import java.util.List;
 
 public class Example {
     public static void main(String[] args) {
-        int numberOfColumns = 5;
-        int numberOfRacks = 5;
-        int numberOfHosts = 5;
+        int numberOfColumns = 10;
+        int numberOfRacks = 10;
+        int numberOfHosts = 10;
         int loadFrequency = 288;
-        int numberOfCloudLet = 10;
+        int numberOfCloudLet = 500;
         boolean trace_flag = false;
         int num_user = 1;
 
         try {
-            CellularAutomaton.evolve(numberOfColumns, numberOfRacks, numberOfHosts, loadFrequency);
+            CellularAutomaton.evolve(numberOfColumns, numberOfRacks, numberOfHosts, (loadFrequency/20 + 1));
 
             Calendar calendar = Calendar.getInstance();
             CloudSim.init(num_user, calendar, trace_flag);
