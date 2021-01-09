@@ -6,10 +6,7 @@ import org.cloudbus.cloudsim.UtilizationModelNull;
 import org.cloudbus.cloudsim.UtilizationModelPlanetLabInMemory;
 import org.cloudbus.cloudsim.examples.power.Constants;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,31 +17,43 @@ public class ThermalCloudLetHelper {
         long outputSize = 300;
         List<Cloudlet> cloudLetList = new ArrayList<Cloudlet>();
         String dir = "user.dir";
-        String path = "\\modules\\cloudsim-examples\\target\\classes\\workload\\planetlab\\20110306";
+        String path = "\\modules\\cloudsim-examples\\target\\classes\\workload\\planetlab\\";
+        String[] directories = {"20110303", "20110306", "20110309", "20110322", "20110325", "20110403", "20110409", "20110411", "20110412", "20110420"};
+        String outputPath = "\\data\\CombinedUtilization\\CombinedUtilization";
+        String extension = ".txt";
 
-        File inputFolder = new File(System.getProperty(dir) + path);
-        File[] files = inputFolder.listFiles();
         long[] length = new long[numberOfCloudLets];
         for(int i = 0; i < numberOfCloudLets; i++) {
-            if(files != null) {
-                BufferedReader input = new BufferedReader(new FileReader(files[i].getAbsolutePath()));
-                int utilization = 0;
-                for(int j = 0; j < loadFrequency; j++) {
-                    utilization = utilization + Integer.parseInt(input.readLine());
+            int utilization = 0;
+            String fileName = System.getProperty(dir) + outputPath + i + extension;
+            File myObj = new File(fileName);
+            myObj.createNewFile();
+            FileWriter fileWriter = new FileWriter(fileName);
+            for(String directory : directories) {
+                File inputFolder = new File(System.getProperty(dir) + path + directory);
+                File[] files = inputFolder.listFiles();
+                if(files != null) {
+                    BufferedReader input = new BufferedReader(new FileReader(files[i].getAbsolutePath()));
+                    for(int j = 0; j < loadFrequency; j++) {
+                        String load = input.readLine();
+                        fileWriter.write(load + "\n");
+                        utilization = utilization + Integer.parseInt(load);
+                    }
                 }
-                length[i] = utilization * 150;
             }
+            fileWriter.close();
+            length[i] = utilization * 150;
         }
 
         UtilizationModel utilizationModelNull = new UtilizationModelNull();
         for(int i = 0; i < numberOfCloudLets; i++) {
-            if(files != null) {
-                UtilizationModelPlanetLabInMemory utilizationModelPlanetLabInMemory = new UtilizationModelPlanetLabInMemory(files[i].getAbsolutePath(), Constants.SCHEDULING_INTERVAL);
-                Cloudlet cloudlet = new Cloudlet(i, length[i], pesNumber, fileSize, outputSize, utilizationModelPlanetLabInMemory, utilizationModelNull, utilizationModelNull);
-                cloudlet.setUserId(brokerId);
-                cloudlet.setVmId(i);
-                cloudLetList.add(cloudlet);
-            }
+            File inputFolder = new File(System.getProperty(dir) + outputPath + i + extension);
+            String inputPaths = inputFolder.getAbsolutePath();
+            UtilizationModelPlanetLabInMemory utilizationModelPlanetLabInMemory = new UtilizationModelPlanetLabInMemory(inputPaths, Constants.SCHEDULING_INTERVAL);
+            Cloudlet cloudlet = new Cloudlet(i, length[i], pesNumber, fileSize, outputSize, utilizationModelPlanetLabInMemory, utilizationModelNull, utilizationModelNull);
+            cloudlet.setUserId(brokerId);
+            cloudlet.setVmId(i);
+            cloudLetList.add(cloudlet);
         }
 
         return cloudLetList;

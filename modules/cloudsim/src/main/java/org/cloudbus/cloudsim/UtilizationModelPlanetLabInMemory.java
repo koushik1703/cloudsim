@@ -28,7 +28,7 @@ public class UtilizationModelPlanetLabInMemory implements UtilizationModel {
 	public UtilizationModelPlanetLabInMemory(String inputPath, double schedulingInterval)
 			throws NumberFormatException,
 			IOException {
-		data = new double[289];
+		data = new double[2880];
 		setSchedulingInterval(schedulingInterval);
 		BufferedReader input = new BufferedReader(new FileReader(inputPath));
 		int n = data.length;

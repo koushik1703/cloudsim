@@ -20,7 +20,7 @@ public class Example {
         int num_user = 1;
 
         try {
-            CellularAutomaton.evolve(numberOfColumns, numberOfRacks, numberOfHosts, (loadFrequency/20 + 1));
+            CellularAutomaton.evolve(numberOfColumns, numberOfRacks, numberOfHosts, (loadFrequency/2));
 
             Calendar calendar = Calendar.getInstance();
             CloudSim.init(num_user, calendar, trace_flag);

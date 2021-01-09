@@ -8,7 +8,7 @@ public class CellularAutomaton {
     public static void evolve(int numberOfColumns, int numberOfRacks, int numberOfHosts, int steps) {
         int [][][]cellularAutomata = new int[numberOfColumns][numberOfRacks][numberOfHosts];
         String dir = "user.dir";
-        String path = "\\Data\\ActiveHostAt";
+        String path = "\\Data\\ActiveHost\\ActiveHostAt";
         String extension = ".txt";
         int firstHost = 0;
         int lastHost = numberOfHosts - 1;

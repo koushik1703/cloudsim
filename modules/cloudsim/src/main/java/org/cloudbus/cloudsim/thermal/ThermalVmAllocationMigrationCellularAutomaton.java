@@ -168,7 +168,7 @@ public class ThermalVmAllocationMigrationCellularAutomaton extends PowerVmAlloca
 
     protected List<ThermalHostUtilizationHistory> getCurrentShutDownHosts() {
         List<ThermalHostUtilizationHistory> currentShutDownHosts = new LinkedList<ThermalHostUtilizationHistory>();
-        String fileName = System.getProperty("user.dir") + "\\Data\\ActiveHostAt" + currentAllocation + ".txt";
+        String fileName = System.getProperty("user.dir") + "\\Data\\ActiveHost\\ActiveHostAt" + currentAllocation + ".txt";
         List<String> allocations = null;
         try {
             allocations = Files.readAllLines(Paths.get(fileName));

@@ -20,7 +20,7 @@ public class ThermalDataCenterHelper {
         double costPerMem = 0.05;
         double costPerStorage = 0.001;
         double costPerBw = 0.0;
-        int optimizationInterval = 6000;
+        int optimizationInterval = 10000;
         LinkedList<Storage> storageList = new LinkedList<Storage>();
 
         DatacenterCharacteristics characteristics = new DatacenterCharacteristics(arch, os, vmm, hostList, time_zone, cost, costPerMem, costPerStorage, costPerBw);
