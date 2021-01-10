@@ -6,6 +6,9 @@ import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.examples.thermal.helper.*;
 import org.cloudbus.cloudsim.thermal.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -20,34 +23,45 @@ public class Example {
         int num_user = 1;
 
         try {
-            CellularAutomaton.evolve(numberOfColumns, numberOfRacks, numberOfHosts, (loadFrequency/2));
+            String fileName = System.getProperty("user.dir") + "\\data\\Output\\output" + ".txt";
+            File myObj = new File(fileName);
+            myObj.createNewFile();
+            FileWriter fileWriter = new FileWriter(fileName);
+            for (int rule = 0; rule < 256; rule++) {
+                try {
+                    CellularAutomaton.evolve(numberOfColumns, numberOfRacks, numberOfHosts, rule, (loadFrequency / 2));
 
-            Calendar calendar = Calendar.getInstance();
-            CloudSim.init(num_user, calendar, trace_flag);
+                    Calendar calendar = Calendar.getInstance();
+                    CloudSim.init(num_user, calendar, trace_flag);
 
-            ThermalDataCenterBroker broker = new ThermalDataCenterBroker("Broker");
+                    ThermalDataCenterBroker broker = new ThermalDataCenterBroker("Broker");
 
-            List<ThermalHostUtilizationHistory> hostList = ThermalHostHelper.createHosts(numberOfColumns, numberOfRacks, numberOfHosts);
-            List<Cloudlet> cloudLetList = ThermalCloudLetHelper.createCloudLet(numberOfCloudLet, loadFrequency, broker.getId());
-            List<ThermalVm> vmList = ThermalVmHelper.createVm(numberOfCloudLet, broker.getId());
+                    List<ThermalHostUtilizationHistory> hostList = ThermalHostHelper.createHosts(numberOfColumns, numberOfRacks, numberOfHosts);
+                    List<Cloudlet> cloudLetList = ThermalCloudLetHelper.createCloudLet(numberOfCloudLet, loadFrequency, broker.getId());
+                    List<ThermalVm> vmList = ThermalVmHelper.createVm(numberOfCloudLet, broker.getId());
 
-            ThermalDataCenter dataCenter = ThermalDataCenterHelper.createDataCenter(hostList);
+                    ThermalDataCenter dataCenter = ThermalDataCenterHelper.createDataCenter(hostList);
 
-            broker.submitVmList(vmList);
-            broker.submitCloudletList(cloudLetList);
+                    broker.submitVmList(vmList);
+                    broker.submitCloudletList(cloudLetList);
 
-            CloudSim.startSimulation();
+                    CloudSim.startSimulation();
 
-            List<Cloudlet> newList = broker.getCloudletReceivedList();
-            Log.printLine("Received " + newList.size() + " cloudLets");
+                    List<Cloudlet> newList = broker.getCloudletReceivedList();
+                    Log.printLine("Received " + newList.size() + " cloudLets");
 
-            CloudSim.stopSimulation();
+                    CloudSim.stopSimulation();
 
-            Printer.printCloudLetList(newList, dataCenter);
-            Log.printLine("CloudSimExample1 finished!");
-        } catch (Exception e) {
+                    Printer.printCloudLetList(newList, dataCenter, rule, fileWriter);
+                    Log.printLine("CloudSimExample1 finished!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.printLine("Unwanted errors happen");
+                }
+            }
+            fileWriter.close();
+        } catch (IOException e) {
             e.printStackTrace();
-            Log.printLine("Unwanted errors happen");
         }
     }
 }

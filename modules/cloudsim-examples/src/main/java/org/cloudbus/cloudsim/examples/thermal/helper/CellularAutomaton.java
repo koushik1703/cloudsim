@@ -5,13 +5,16 @@ import java.io.FileWriter;
 import java.util.Random;
 
 public class CellularAutomaton {
-    public static void evolve(int numberOfColumns, int numberOfRacks, int numberOfHosts, int steps) {
+    static int[] ruleArray;
+
+    public static void evolve(int numberOfColumns, int numberOfRacks, int numberOfHosts, int rule, int steps) {
         int [][][]cellularAutomata = new int[numberOfColumns][numberOfRacks][numberOfHosts];
         String dir = "user.dir";
-        String path = "\\Data\\ActiveHost\\ActiveHostAt";
+        String path = "\\data\\ActiveHost\\ActiveHostAt";
         String extension = ".txt";
         int firstHost = 0;
         int lastHost = numberOfHosts - 1;
+        convertToRuleArray(rule);
 
         for(int column = 0; column < numberOfColumns; column++) {
             for (int rack = 0; rack < numberOfRacks; rack++) {
@@ -52,9 +55,42 @@ public class CellularAutomaton {
     }
 
     public static int rules(int cell, int right, int left) {
-        if(cell + right + left < 2) {
-            return 1;
+        if(cell == 0 && right == 0 && left == 0) {
+            return ruleArray[0];
         }
-        return 0;
+        if(cell == 0 && right == 0 && left == 1) {
+            return ruleArray[1];
+        }
+        if(cell == 0 && right == 1 && left == 0) {
+            return ruleArray[2];
+        }
+        if(cell == 0 && right == 1 && left == 1) {
+            return ruleArray[3];
+        }
+        if(cell == 1 && right == 0 && left == 0) {
+            return ruleArray[4];
+        }
+        if(cell == 1 && right == 0 && left == 1) {
+            return ruleArray[5];
+        }
+        if(cell == 1 && right == 1 && left == 0) {
+            return ruleArray[6];
+        }
+        if(cell == 1 && right == 1 && left == 1) {
+            return ruleArray[7];
+        }
+        return new Random().nextInt(2);
+    }
+
+    public static void convertToRuleArray(int rule) {
+        ruleArray = new int[8];
+        for(int i = 0; i < 8; i++) {
+            ruleArray[i] = 0;
+        }
+        String binary = Integer.toBinaryString(rule);
+        int diff = 8 - binary.length();
+        for(int i = 0; i < binary.length(); i++) {
+            ruleArray[diff + i] = binary.charAt(i) - 48;
+        }
     }
 }

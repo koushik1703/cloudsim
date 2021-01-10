@@ -115,7 +115,7 @@ public class Datacenter extends SimEntity {
 
 	/**
 	 * Overrides this method when making a new and different type of resource. <br>
-	 * <b>NOTE:</b> You do not need to override {@link #body()} method, if you use this method.
+	 * <b>NOTE:</b> You do not need to override  method, if you use this method.
 	 * 
 	 * @pre $none
 	 * @post $none
@@ -528,8 +528,7 @@ public class Datacenter extends SimEntity {
 		host.removeMigratingInVm(vm);
 		boolean result = getVmAllocationPolicy().allocateHostForVm(vm, host);
 		if (!result) {
-			Log.printLine("[Datacenter.processVmMigrate] VM allocation to the destination host failed");
-			System.exit(0);
+			throw new IllegalStateException("[Datacenter.processVmMigrate] VM allocation to the destination host failed");
 		}
 
 		if (ack) {

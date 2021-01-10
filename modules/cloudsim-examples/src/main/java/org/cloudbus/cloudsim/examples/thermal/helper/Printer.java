@@ -4,11 +4,14 @@ import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.thermal.ThermalDataCenter;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class Printer {
-    public static void printCloudLetList(List<Cloudlet> list, ThermalDataCenter thermalDataCenter) {
+    public static void printCloudLetList(List<Cloudlet> list, ThermalDataCenter thermalDataCenter, int rule, FileWriter fileWriter) {
         Cloudlet cloudlet;
         String unit = " Kwh";
 
@@ -30,9 +33,16 @@ public class Printer {
             }
         }
 
-        Log.printLine("========== OUTPUT ==========");
-        Log.printLine("DataCenter ID" + indent + "Energy Consumed");
-        double energy = thermalDataCenter.getPower() / (3600 * 1000);
-        Log.printLine(thermalDataCenter.getId() + indent + indent + indent + indent + energy + unit);
+
+        try {
+            fileWriter.write("========= RUlE : "+ rule +" =========" + "\n");
+            fileWriter.write("========== OUTPUT ==========" + "\n");
+            fileWriter.write("DataCenter ID" + indent + "Energy Consumed" + "\n");
+            double energy = thermalDataCenter.getPower() / (3600 * 1000);
+            fileWriter.write(thermalDataCenter.getId() + indent + indent + indent + indent + energy + unit + "\n");
+            fileWriter.write("\n\n\n\n\n\n\n\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
