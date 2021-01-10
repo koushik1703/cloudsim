@@ -10,6 +10,7 @@ import java.util.List;
 public class Printer {
     public static void printCloudLetList(List<Cloudlet> list, ThermalDataCenter thermalDataCenter) {
         Cloudlet cloudlet;
+        String unit = " Kwh";
 
         String indent = "    ";
         Log.printLine();
@@ -32,6 +33,6 @@ public class Printer {
         Log.printLine("========== OUTPUT ==========");
         Log.printLine("DataCenter ID" + indent + "Energy Consumed");
         double energy = thermalDataCenter.getPower() / (3600 * 1000);
-        Log.printLine(thermalDataCenter.getId() + indent + indent + indent + energy);
+        Log.printLine(thermalDataCenter.getId() + indent + indent + indent + indent + energy + unit);
     }
 }

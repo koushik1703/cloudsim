@@ -12,8 +12,8 @@ import java.util.List;
 
 public class ThermalHostUtilizationHistory extends ThermalHost {
 
-    public ThermalHostUtilizationHistory(int id, RamProvisioner ramProvisioner, BwProvisioner bwProvisioner, long storage, List<? extends Pe> peList, VmScheduler vmScheduler, PowerModel powerModel) {
-        super(id, ramProvisioner, bwProvisioner, storage, peList, vmScheduler, powerModel);
+    public ThermalHostUtilizationHistory(int id, RamProvisioner ramProvisioner, BwProvisioner bwProvisioner, long storage, List<? extends Pe> peList, VmScheduler vmScheduler, PowerModel powerModel, int temperature, double thermalFactor, ThermalModel thermalModel) {
+        super(id, ramProvisioner, bwProvisioner, storage, peList, vmScheduler, powerModel, temperature, thermalFactor, thermalModel);
     }
 
     protected double[] getUtilizationHistory() {

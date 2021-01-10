@@ -5,6 +5,7 @@ import org.cloudbus.cloudsim.Storage;
 import org.cloudbus.cloudsim.VmAllocationPolicy;
 import org.cloudbus.cloudsim.thermal.ThermalDataCenter;
 import org.cloudbus.cloudsim.thermal.ThermalHostUtilizationHistory;
+import org.cloudbus.cloudsim.thermal.ThermalVMAllocationPolicySimple;
 import org.cloudbus.cloudsim.thermal.ThermalVmAllocationMigrationCellularAutomaton;
 
 import java.util.LinkedList;

@@ -10,16 +10,18 @@ import org.cloudbus.cloudsim.provisioners.RamProvisioner;
 import java.util.List;
 
 public class ThermalHost extends PowerHost {
+    private ThermalModel thermalModel;
     private double temperature;
+    private double thermalFactor;
     private double neighbourTemperature;
-    private double coolingTemperature;
     private ThermalHost rightHost;
     private ThermalHost leftHost;
 
-    public ThermalHost(int id, RamProvisioner ramProvisioner, BwProvisioner bwProvisioner, long storage, List<? extends Pe> peList, VmScheduler vmScheduler, PowerModel powerModel) {
+    public ThermalHost(int id, RamProvisioner ramProvisioner, BwProvisioner bwProvisioner, long storage, List<? extends Pe> peList, VmScheduler vmScheduler, PowerModel powerModel, double temperature, double thermalFactor, ThermalModel thermalModel) {
         super(id, ramProvisioner, bwProvisioner, storage, peList, vmScheduler, powerModel);
-        setCoolingTemperature(0.2);
-        setTemperature(40);
+        setTemperature(temperature);
+        setThermalFactor(thermalFactor);
+        setThermalModel(thermalModel);
     }
 
     @Override
@@ -32,8 +34,22 @@ public class ThermalHost extends PowerHost {
         return ((fromPower + (toPower - fromPower) / 2) + getTemperature()) * time;
     }
 
+    public void getTemperatureFromNeighbour() {
+        this.neighbourTemperature = 0;
+        if(this.leftHost != null) {
+            this.neighbourTemperature = this.neighbourTemperature + getThermalFactor() * this.leftHost.getTemperature();
+        }
+        if(this.rightHost != null) {
+            this.neighbourTemperature = this.neighbourTemperature + getThermalFactor() * this.rightHost.getTemperature();
+        }
+    }
+
+    public void updateTemperatureFromNeighbour() {
+        this.temperature = this.temperature + this.neighbourTemperature;
+    }
+
     public void incrementTemperature(double utilization) {
-        this.temperature = getTemperature() - getCoolingTemperature() + (0.03 * utilization);
+        this.temperature = getTemperature() + thermalModel.getTemperature(utilization);
     }
 
     public void setTemperature(double temperature) {
@@ -44,14 +60,6 @@ public class ThermalHost extends PowerHost {
         return this.temperature;
     }
 
-    public void setCoolingTemperature(double coolingTemperature) {
-        this.coolingTemperature = coolingTemperature;
-    }
-
-    public double getCoolingTemperature() {
-        return this.coolingTemperature;
-    }
-
     public void setLeftHost(ThermalHost leftHost) {
         this.leftHost = leftHost;
     }
@@ -60,17 +68,19 @@ public class ThermalHost extends PowerHost {
         this.rightHost = rightHost;
     }
 
-    public void getTemperatureFromNeighbour() {
-        this.neighbourTemperature = 0;
-        if(this.leftHost != null) {
-            this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.leftHost.getTemperature();
-        }
-        if(this.rightHost != null) {
-            this.neighbourTemperature = this.neighbourTemperature + 0.001 * this.rightHost.getTemperature();
-        }
+    public void setThermalFactor(double thermalFactor) {
+        this.thermalFactor = thermalFactor;
     }
 
-    public void updateTemperatureFromNeighbour() {
-        this.temperature = this.temperature + this.neighbourTemperature;
+    public double getThermalFactor() {
+        return this.thermalFactor;
+    }
+
+    public void setThermalModel(ThermalModel thermalModel) {
+        this.thermalModel = thermalModel;
+    }
+
+    public ThermalModel getThermalModel() {
+        return thermalModel;
     }
 }

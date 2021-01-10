@@ -8,8 +8,7 @@ import org.cloudbus.cloudsim.provisioners.BwProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.PeProvisionerSimple;
 import org.cloudbus.cloudsim.provisioners.RamProvisioner;
 import org.cloudbus.cloudsim.provisioners.RamProvisionerSimple;
-import org.cloudbus.cloudsim.thermal.ThermalHost;
-import org.cloudbus.cloudsim.thermal.ThermalHostUtilizationHistory;
+import org.cloudbus.cloudsim.thermal.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,11 +36,14 @@ public class ThermalHostHelper {
         for(int column = 0; column < numberOfColumns; column++) {
             for(int rack = 0; rack < numberOfRacks; rack++) {
                 for(int host = 0; host < numberOfHosts; host++) {
+                    int initialTemperature = 40;
+                    double thermalFactor = 0.001;
                     RamProvisioner ramProvisioner = new RamProvisionerSimple(hostRam);
                     BwProvisionerSimple bwProvisionerSimple = new BwProvisionerSimple(hostBw);
                     VmSchedulerTimeShared vmSchedulerTimeShared = new VmSchedulerTimeShared(peList);
                     PowerModel powerModel = new PowerModelLinear(200, 0.3);
-                    ThermalHostUtilizationHistory thermalHost = new ThermalHostUtilizationHistory(hostId, ramProvisioner, bwProvisionerSimple, hostStorage, peList, vmSchedulerTimeShared, powerModel);
+                    ThermalModel thermalModel = new ThermalModelLinear(0.03);
+                    ThermalHostUtilizationHistory thermalHost = new ThermalHostUtilizationHistory(hostId, ramProvisioner, bwProvisionerSimple, hostStorage, peList, vmSchedulerTimeShared, powerModel, initialTemperature, thermalFactor, thermalModel);
                     thermalHosts[column][rack][host] = thermalHost;
                     hostList.add(thermalHost);
                     hostId++;
