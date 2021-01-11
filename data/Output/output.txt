@@ -1,0 +1,1000 @@
+========= RUlE : 0 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 1 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 2 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                727.277308648118 Kwh
+
+========= RUlE : 4 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 5 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 6 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                805.6217270098217 Kwh
+
+========= RUlE : 7 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1126.7941101172771 Kwh
+
+========= RUlE : 8 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                999.2233275366227 Kwh
+
+========= RUlE : 9 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                946.0829014988591 Kwh
+
+========= RUlE : 10 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1085.662356660791 Kwh
+
+========= RUlE : 11 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                948.3672374086887 Kwh
+
+========= RUlE : 12 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                939.5053196509092 Kwh
+
+========= RUlE : 13 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                951.1510418812869 Kwh
+
+========= RUlE : 14 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1166.3967669142896 Kwh
+
+========= RUlE : 15 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1253.4989434264264 Kwh
+
+========= RUlE : 16 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 17 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 18 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                715.6544893362379 Kwh
+
+========= RUlE : 20 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 21 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 22 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                750.6978989988912 Kwh
+
+========= RUlE : 23 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1198.6724430246186 Kwh
+
+========= RUlE : 24 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                788.20646725936 Kwh
+
+========= RUlE : 25 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                882.5598169269576 Kwh
+
+========= RUlE : 26 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                901.7136643613768 Kwh
+
+========= RUlE : 27 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                833.0649843083405 Kwh
+
+========= RUlE : 28 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                862.7222718552155 Kwh
+
+========= RUlE : 29 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                763.814751595843 Kwh
+
+========= RUlE : 30 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                957.3536242449004 Kwh
+
+========= RUlE : 31 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1335.6354444439314 Kwh
+
+========= RUlE : 32 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                653.6287920626503 Kwh
+
+========= RUlE : 34 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                742.7233095804677 Kwh
+
+========= RUlE : 36 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                660.8432669464855 Kwh
+
+========= RUlE : 38 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                629.9263132233825 Kwh
+
+========= RUlE : 39 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1284.9981234399381 Kwh
+
+========= RUlE : 40 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                560.500618486795 Kwh
+
+========= RUlE : 42 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                833.1998325575191 Kwh
+
+========= RUlE : 43 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                644.5634455889202 Kwh
+
+========= RUlE : 44 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1036.9455044047836 Kwh
+
+========= RUlE : 45 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                929.6166908916066 Kwh
+
+========= RUlE : 46 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1219.9026900668107 Kwh
+
+========= RUlE : 47 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1304.9342573726515 Kwh
+
+========= RUlE : 48 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                657.8209553933339 Kwh
+
+========= RUlE : 50 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                690.8984747118263 Kwh
+
+========= RUlE : 52 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                579.4953701647601 Kwh
+
+========= RUlE : 55 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1406.6973335640384 Kwh
+
+========= RUlE : 58 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                466.3739761247381 Kwh
+
+========= RUlE : 59 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                507.4921713304289 Kwh
+
+========= RUlE : 60 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                610.1853467780284 Kwh
+
+========= RUlE : 61 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                633.7657742971971 Kwh
+
+========= RUlE : 62 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                730.8520165704664 Kwh
+
+========= RUlE : 63 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1399.1447059686943 Kwh
+
+========= RUlE : 64 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 65 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 66 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                781.667227744293 Kwh
+
+========= RUlE : 68 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 69 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 71 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1218.5155728493066 Kwh
+
+========= RUlE : 72 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                639.8372800159796 Kwh
+
+========= RUlE : 73 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                708.521158219939 Kwh
+
+========= RUlE : 74 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1127.603529131905 Kwh
+
+========= RUlE : 75 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                927.3650119042345 Kwh
+
+========= RUlE : 76 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                620.6723803852061 Kwh
+
+========= RUlE : 77 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                623.5934682383519 Kwh
+
+========= RUlE : 78 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1259.3882912725767 Kwh
+
+========= RUlE : 79 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1414.747211227738 Kwh
+
+========= RUlE : 80 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 81 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 82 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                718.1561815244855 Kwh
+
+========= RUlE : 84 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 85 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
+========= RUlE : 86 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                493.3167465114901 Kwh
+
+========= RUlE : 87 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1375.910905606811 Kwh
+
+========= RUlE : 90 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                609.8392857651137 Kwh
+
+========= RUlE : 91 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                646.9358563500344 Kwh
+
+========= RUlE : 92 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                496.8492521933778 Kwh
+
+========= RUlE : 93 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                499.3103391780372 Kwh
+
+========= RUlE : 94 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                755.9219422772479 Kwh
+
+========= RUlE : 95 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1544.7300567898192 Kwh
+
+========= RUlE : 96 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                607.4872889654212 Kwh
+
+========= RUlE : 98 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                759.717615826517 Kwh
+
+========= RUlE : 100 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                804.6300155417354 Kwh
+
+========= RUlE : 103 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1408.6563829867273 Kwh
+
+========= RUlE : 106 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                913.6887363756531 Kwh
+
+========= RUlE : 107 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                639.1238421181329 Kwh
+
+========= RUlE : 108 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                598.4406059246131 Kwh
+
+========= RUlE : 109 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                645.8906953497886 Kwh
+
+========= RUlE : 110 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1244.482056302097 Kwh
+
+========= RUlE : 111 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1475.1584226214338 Kwh
+
+========= RUlE : 112 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                561.0386546212583 Kwh
+
+========= RUlE : 114 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                691.54113780372 Kwh
+
+========= RUlE : 119 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1556.3923407047125 Kwh
+
+========= RUlE : 120 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1277.0294036581427 Kwh
+
+========= RUlE : 122 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                475.9643014346803 Kwh
+
+========= RUlE : 124 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                505.6509631563915 Kwh
+
+========= RUlE : 125 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                522.9802670808543 Kwh
+
+========= RUlE : 126 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                711.473432990044 Kwh
+
+========= RUlE : 127 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1610.621805692213 Kwh
+
+========= RUlE : 128 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1850.7189344095445 Kwh
+
+========= RUlE : 129 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1858.9283803736716 Kwh
+
+========= RUlE : 130 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1903.8252995035123 Kwh
+
+========= RUlE : 132 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1858.742659880785 Kwh
+
+========= RUlE : 133 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1852.182485808745 Kwh
+
+========= RUlE : 134 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                831.7777893066287 Kwh
+
+========= RUlE : 135 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1064.158074877031 Kwh
+
+========= RUlE : 136 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1108.101655828211 Kwh
+
+========= RUlE : 137 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1090.0159160984945 Kwh
+
+========= RUlE : 138 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1209.7205724250155 Kwh
+
+========= RUlE : 139 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1142.501314811116 Kwh
+
+========= RUlE : 140 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1063.5060587813646 Kwh
+
+========= RUlE : 141 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1097.0458194667533 Kwh
+
+========= RUlE : 142 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1279.0960387024654 Kwh
+
+========= RUlE : 143 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1390.7330991356746 Kwh
+
+========= RUlE : 144 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1870.888298909147 Kwh
+
+========= RUlE : 145 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1860.9232342158061 Kwh
+
+========= RUlE : 146 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1671.5313750185867 Kwh
+
+========= RUlE : 148 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1766.25965930749 Kwh
+
+========= RUlE : 149 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1781.8338496850056 Kwh
+
+========= RUlE : 151 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1333.1414220377922 Kwh
+
+========= RUlE : 154 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                872.2803413660976 Kwh
+
+========= RUlE : 155 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                777.272936677779 Kwh
+
+========= RUlE : 156 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                563.1763230985138 Kwh
+
+========= RUlE : 157 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                603.005673504111 Kwh
+
+========= RUlE : 158 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                949.5056311564385 Kwh
+
+========= RUlE : 159 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1445.673247719418 Kwh
+
+========= RUlE : 160 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1939.8068956746608 Kwh
+
+========= RUlE : 162 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1943.769882099979 Kwh
+
+========= RUlE : 164 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1220.2770251063387 Kwh
+
+========= RUlE : 166 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                603.9246717027376 Kwh
+
+========= RUlE : 167 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1276.3552084588562 Kwh
+
+========= RUlE : 168 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1004.3952117819123 Kwh
+
+========= RUlE : 169 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                895.8353261432815 Kwh
+
+========= RUlE : 170 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1227.0890464102354 Kwh
+
+========= RUlE : 171 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1001.8595026130781 Kwh
+
+========= RUlE : 172 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1132.9727423486463 Kwh
+
+========= RUlE : 173 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1082.1500738434772 Kwh
+
+========= RUlE : 174 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1314.161947767247 Kwh
+
+========= RUlE : 175 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1393.910904230355 Kwh
+
+========= RUlE : 176 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1940.9716471763543 Kwh
+
+========= RUlE : 178 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1940.1637672001627 Kwh
+
+========= RUlE : 180 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1247.143938969473 Kwh
+
+========= RUlE : 183 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1510.8515351443143 Kwh
+
+========= RUlE : 184 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1410.0672725292388 Kwh
+
+========= RUlE : 186 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                533.8023846034523 Kwh
+
+========= RUlE : 187 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                549.8160854593556 Kwh
+
+========= RUlE : 188 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                535.6195865850826 Kwh
+
+========= RUlE : 189 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                577.1694188975075 Kwh
+
+========= RUlE : 190 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                786.8859573332003 Kwh
+
+========= RUlE : 191 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1471.6165030031168 Kwh
+
+========= RUlE : 192 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1924.2220458153147 Kwh
+
+========= RUlE : 193 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1920.5072373431203 Kwh
+
+========= RUlE : 194 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1222.892349227595 Kwh
+
+========= RUlE : 196 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1923.394714778907 Kwh
+
+========= RUlE : 197 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1926.4842362229783 Kwh
+
+========= RUlE : 198 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                534.42886822988 Kwh
+
+========= RUlE : 199 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1299.1093709168183 Kwh
+
+========= RUlE : 200 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                609.3236721602881 Kwh
+
+========= RUlE : 201 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                580.1619080964778 Kwh
+
+========= RUlE : 202 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1165.596795614936 Kwh
+
+========= RUlE : 204 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                656.5993345656525 Kwh
+
+========= RUlE : 205 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                644.557208511547 Kwh
+
+========= RUlE : 206 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1296.7110208309473 Kwh
+
+========= RUlE : 207 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1443.8295064347499 Kwh
+
+========= RUlE : 208 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1930.8015301612122 Kwh
+
+========= RUlE : 209 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1805.2339304851969 Kwh
+
+========= RUlE : 210 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1251.1932570985455 Kwh
+
+========= RUlE : 212 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1939.9781584753957 Kwh
+
+========= RUlE : 213 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1902.798061766254 Kwh
+
+========= RUlE : 215 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1582.3202484187038 Kwh
+
+========= RUlE : 216 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1416.8721898423717 Kwh
+
+========= RUlE : 218 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                579.6243107183725 Kwh
+
+========= RUlE : 219 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                557.6797583896837 Kwh
+
+========= RUlE : 220 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                488.5950234448425 Kwh
+
+========= RUlE : 221 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                509.36741891857116 Kwh
+
+========= RUlE : 222 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                763.4783100939782 Kwh
+
+========= RUlE : 223 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1634.1045571128552 Kwh
+
+========= RUlE : 224 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1936.339882580148 Kwh
+
+========= RUlE : 226 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1900.3398255018192 Kwh
+
+========= RUlE : 228 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1859.955217613859 Kwh
+
+========= RUlE : 229 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1606.2846157063366 Kwh
+
+========= RUlE : 231 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1417.699395510268 Kwh
+
+========= RUlE : 232 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                765.3077021297843 Kwh
+
+========= RUlE : 234 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1099.4995438742872 Kwh
+
+========= RUlE : 235 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                819.5752694522773 Kwh
+
+========= RUlE : 236 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                621.3369188400671 Kwh
+
+========= RUlE : 237 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                629.0658064564564 Kwh
+
+========= RUlE : 238 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1286.3316512811778 Kwh
+
+========= RUlE : 239 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1427.3189940418124 Kwh
+
+========= RUlE : 240 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1949.5595210270073 Kwh
+
+========= RUlE : 242 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1901.4037654995632 Kwh
+
+========= RUlE : 244 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1924.773834229833 Kwh
+
+========= RUlE : 245 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1917.7791755119638 Kwh
+
+========= RUlE : 247 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1633.3851200905367 Kwh
+
+========= RUlE : 248 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1416.3925274610538 Kwh
+
+========= RUlE : 250 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                546.8313566179269 Kwh
+
+========= RUlE : 251 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                565.612020522082 Kwh
+
+========= RUlE : 252 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                504.10072264729865 Kwh
+
+========= RUlE : 253 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                522.378456000433 Kwh
+
+========= RUlE : 254 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                714.3805549030521 Kwh
+
+========= RUlE : 255 =========
+========== OUTPUT ==========
+DataCenter ID    Energy Consumed
+3                1655.2101127396948 Kwh
+
