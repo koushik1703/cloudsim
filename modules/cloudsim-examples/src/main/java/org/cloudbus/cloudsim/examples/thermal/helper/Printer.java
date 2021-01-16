@@ -3,15 +3,19 @@ package org.cloudbus.cloudsim.examples.thermal.helper;
 import org.cloudbus.cloudsim.Cloudlet;
 import org.cloudbus.cloudsim.Log;
 import org.cloudbus.cloudsim.thermal.ThermalDataCenter;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.annotation.Documented;
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class Printer {
-    public static void printCloudLetList(List<Cloudlet> list, ThermalDataCenter thermalDataCenter, int rule, FileWriter fileWriter) {
+    public static void printCloudLetList(List<Cloudlet> list, ThermalDataCenter thermalDataCenter, int rule, Document document, Element vmElement) {
         Cloudlet cloudlet;
         String unit = " Kwh";
 
@@ -33,16 +37,11 @@ public class Printer {
             }
         }
 
-
-        try {
-            fileWriter.write("========= RUlE : "+ rule +" =========" + "\n");
-            fileWriter.write("========== OUTPUT ==========" + "\n");
-            fileWriter.write("DataCenter ID" + indent + "Energy Consumed" + "\n");
-            double energy = thermalDataCenter.getPower() / (3600 * 1000);
-            fileWriter.write(thermalDataCenter.getId() + indent + indent + indent + indent + energy + unit + "\n");
-            fileWriter.write("\n\n\n\n\n\n\n\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Element ruleElement = document.createElement("Rule" + rule);
+        Attr attr = document.createAttribute("EnergyConsumed");
+        double energy = thermalDataCenter.getPower() / (3600 * 1000);
+        attr.setValue("" + energy);
+        ruleElement.setAttributeNode(attr);
+        vmElement.appendChild(ruleElement);
     }
 }
