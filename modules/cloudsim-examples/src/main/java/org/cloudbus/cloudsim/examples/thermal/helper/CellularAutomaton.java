@@ -55,28 +55,28 @@ public class CellularAutomaton {
     }
 
     public static int rules(int cell, int right, int left) {
-        if(cell == 0 && right == 0 && left == 0) {
+        if(left == 0 && cell == 0 && right == 0) {
             return ruleArray[0];
         }
-        if(cell == 0 && right == 0 && left == 1) {
+        if(left == 0 && cell == 0 && right == 1) {
             return ruleArray[1];
         }
-        if(cell == 0 && right == 1 && left == 0) {
+        if(left == 0 && cell == 1 && right == 0) {
             return ruleArray[2];
         }
-        if(cell == 0 && right == 1 && left == 1) {
+        if(left == 0 && cell == 1 && right == 1) {
             return ruleArray[3];
         }
-        if(cell == 1 && right == 0 && left == 0) {
+        if(left == 1 && cell == 0 && right == 0) {
             return ruleArray[4];
         }
-        if(cell == 1 && right == 0 && left == 1) {
+        if(left == 1 && cell == 0 && right == 1) {
             return ruleArray[5];
         }
-        if(cell == 1 && right == 1 && left == 0) {
+        if(left == 1 && cell == 1 && right == 0) {
             return ruleArray[6];
         }
-        if(cell == 1 && right == 1 && left == 1) {
+        if(left == 1 && cell == 1 && right == 1) {
             return ruleArray[7];
         }
         return new Random().nextInt(2);
